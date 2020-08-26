@@ -1,0 +1,65 @@
+﻿@model IEnumerable<ContactDTO>
+@{
+    ViewData["Title"] = "ContactList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section pageHeader{
+    <div class="note note-info">
+        <p> Sistem gelen talepler</p>
+    </div>
+}
+
+<div class="portlet box blue">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-cogs"></i>Sistemde iletişime geçenler
+        </div>
+        <div class="tools">
+            <a href="javascript:;" class="collapse"> </a>
+            <a href="#portlet-config" data-toggle="modal" class="config"> </a>
+            <a href="javascript:;" class="reload"> </a>
+            <a href="javascript:;" class="remove"> </a>
+        </div>
+    </div>
+    <div class="portlet-body">
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> # </th>
+                        <th> FullName</th>
+                        <th>Mail</th>
+                        <th>Title</th>
+                        <th>Content</th>
+                        <th>Phone</th>
+                        <th>Read</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (ContactDTO contactDTO in Model)
+                    {
+                        <tr>
+                            <td>@contactDTO.Id </td>
+                            <td> @contactDTO.FullName </td>
+                            <td> @contactDTO.Mail </td>
+                            <td> @contactDTO.Title </td>
+                            <td> @contactDTO.Content     </td>
+                            <td> @contactDTO.Phone </td>
+                            <td> @contactDTO.Read </td>
+                            <td>
+                                <a class="btn btn-info btn-sm" asp-action="MarkAsRead" asp-route-id="@contactDTO.Id">Mark as Read</a>
+                            </td>
+                        </tr>
+                    }
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+

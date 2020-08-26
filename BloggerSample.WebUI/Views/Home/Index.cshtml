@@ -1,0 +1,42 @@
+﻿@model IEnumerable<ArticleDTO>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layoutfe.cshtml";
+}
+
+@foreach (var articleDTO in Model)
+{
+
+    <div class="col-md-12">
+        <h1>When in Doubt Wear Something Simple</h1>
+        <div class="entry-meta table">
+            <span>
+                Written by
+                <a href="#">Rehman Ali</a>
+            </span>
+            <span> / </span>
+            <span>  </span>
+            <span> / </span>
+            <span> @articleDTO.ReleaseDate</span>
+        </div>
+        <div>
+            <img src="@articleDTO.Picture" class="img-responsive" alt="fashion">
+        </div>
+        <div class="media">
+            @if (articleDTO.Content != null && articleDTO.Content.Length > 50)
+            {
+                <p>@articleDTO.Content.Substring(0, 50) ...</p>
+            }
+            else
+            {
+                @articleDTO.Content
+            }
+        </div>
+        <div class="read-more padding text-center">
+            <a class="btn btn-default btn-hover" asp-action="ArticleView" asp-route-id="@articleDTO.Id">Devamını okumak ıcın tıkla</a>
+        </div>
+    </div>
+}
+
+
+

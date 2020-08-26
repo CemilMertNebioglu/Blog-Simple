@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BloggerSample.Core\BloggerSample.Core.csproj" />
+    <ProjectReference Include="..\BloggerSample.DTO\BloggerSample.DTO.csproj" />
+    <ProjectReference Include="..\BloggerSample.Entity\BloggerSample.Model.csproj" />
+    <ProjectReference Include="..\BloggerSample.Mapping\BloggerSample.Mapping.csproj" />
+  </ItemGroup>
+
+</Project>

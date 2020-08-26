@@ -1,0 +1,87 @@
+﻿@model BloggerSample.WebUI.Models.ArticleViewModel
+@{ Layout = "~/Views/Shared/_Layoutfe.cshtml"; }
+
+
+
+@*<script src="http://neue.cc/linq.min.js"></script>*@
+<script src="~/js/Angular.js"></script>
+
+<script src="~/ClientController/CommentController.js"></script>
+<!-- Page Content -->
+
+<div class="row">
+    <br />
+    <!-- Blog Entries Column -->
+    <div class="col-md-8">
+
+        <!-- Blog Post -->
+        <div class="card mb-4">
+            <img class="card-img-top" src="@Model.ArticleDTO.Picture" alt="Card image cap" width="400">
+            <div class="card-body">
+                <h2 class="card-title">@Model.ArticleDTO.Title</h2>
+                <p class="card-text">@Model.ArticleDTO.Content</p>
+                <span>Kategorisi: <span class="badge badge-success">@Model.CategoryDTOs.FirstOrDefault(z => z.Id == Model.ArticleDTO.CategoryId).Name</span> </span>
+                <br />
+                <br />
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+<div ng-app="myApp" ng-controller="commentController as vm">
+
+
+
+
+    <div class="clearfix">
+        <div class="col-sm-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <strong>Bir yorum yaz...</strong>
+                </div>
+                <div class="panel-body">
+                    <label class="form-group">Konu </label>
+                    <input class="form-group" type="text" ng-model="vm.title" />
+                </div>
+                <div class="panel-body">
+                    <label> Yorum giriniz</label>
+                    <textarea class="form group" style="width:100%;" ng-model="vm.content" rows="5"></textarea>
+                    <button type="button" class="btn btn-primary" ng-click="vm.CommentAdd()">Gönder</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="media-heading">Yorumlar</div>
+    p
+    <hr />
+
+    <div class="col-sm-12" ng-repeat="comment in vm.data">
+        <div class="media-body">
+
+            <div class="well well-lg">
+                <h4 class="media-heading text-uppercase reviews">{{comment.title}} </h4>
+                <ul class="media-date" style="font-size:12px; float:right;">
+                    Yorum Tarihi: {{comment.createDate}}
+                </ul>
+                <br />
+                <p class="media-comment">
+                    {{comment.content}}
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+</div>

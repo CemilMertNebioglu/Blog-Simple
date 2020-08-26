@@ -1,0 +1,12 @@
+﻿@model IEnumerable<CategoryDTO>
+
+<div class="col-lg-12">
+    <ul class="list-unstyled">
+        @foreach (var category in Model)
+        {
+            <li>
+                <a href="#">@category.Name</a>
+            </li>
+        }
+    </ul>
+</div>
